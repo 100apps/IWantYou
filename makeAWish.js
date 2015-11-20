@@ -6,7 +6,7 @@ var smtpUser="yunteng.ma@houpix.com";
 var smtpPwd="**********";
 var smtpServer="smtp.qiye.163.com";
 
-var startUrl="https://github.com/search?q=location%3Ashanghai&ref=searchresults&type=Users&utf8=%E2%9C%93";
+var startUrl="https://github.com/search?l=JavaScript&q=location%3Ashanghai&ref=searchresults&type=Users&utf8=%E2%9C%93";
 
 var email   = require("emailjs/email");
 var server  = email.server.connect({
@@ -16,9 +16,9 @@ var server  = email.server.connect({
 });
 var text=fs.readFileSync("email.txt",'utf-8');
 var sendedTmp=fs.readFileSync("log.txt",'utf-8').split("\n");
-var sended=[];
-for(var i=0;i<sendedTmp.length;i++){
-  sended[sendedTmp[i]]=1;
+var sended={};
+for(var i=0,len= sendedTmp.length ;i< len;i++){
+  sended[sendedTmp[i]]= true;
 }
 console.log(sended.length+"已发");
 
@@ -75,7 +75,7 @@ function sendEmail(toEmail,toName){
     }else{
       console.log("sended to "+toName+" <"+toEmail+">\n"+message.text);
       fs.appendFile("log.txt",toEmail+"\n");
-      sended[toEmail]=1;
+      sended[toEmail]=true;
     }
   });
 }
