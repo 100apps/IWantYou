@@ -1,3 +1,7 @@
+console.log("知道自己在做什么吗？");
+return;
+
+
 var http = require("https");
 var cheerio=require("cheerio");
 var fs = require('fs');
